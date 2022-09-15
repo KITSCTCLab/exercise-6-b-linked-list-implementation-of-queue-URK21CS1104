@@ -10,13 +10,30 @@ class Queue:
     self.last = None
 
   def enqueue(self, data) -> None:
-    # Write your code here
+      last = self.last
+      node = Node(data)
+      if(self.last is None and self.head is None):
+        self.last , self.head = node , node
+      else:
+        self.last.next = node
+        self.last = node
 
   def dequeue(self) -> None:
-    # Write your code here
+    if self.head is not None:
+      self.head = self.head.next
+    else:
+      print("Queue is Empty")
+
+    if self.head.next is None:
+      self.head = None
+      self.last = None
 
   def status(self) -> None:
-    # Write your code here
+    ptr = self.head
+    while ptr:
+      print(ptr.data,end = "=>")
+      ptr = ptr.next
+    print("None")
 
 
 # Do not change the following code
